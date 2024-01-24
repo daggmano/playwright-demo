@@ -3529,13 +3529,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"asap@npm:~2.0.6":
-  version: 2.0.6
-  resolution: "asap@npm:2.0.6"
-  checksum: c6d5e39fe1f15e4b87677460bd66b66050cd14c772269cee6688824c1410a08ab20254bb6784f9afb75af9144a9f9a7692d49547f4d19d715aeb7c0318f3136d
-  languageName: node
-  linkType: hard
-
 "ast-types-flow@npm:^0.0.8":
   version: 0.0.8
   resolution: "ast-types-flow@npm:0.0.8"
@@ -3901,7 +3894,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"camelcase@npm:6.3.0, camelcase@npm:^6.2.0":
+"camelcase@npm:^6.2.0":
   version: 6.3.0
   resolution: "camelcase@npm:6.3.0"
   checksum: 0d701658219bd3116d12da3eab31acddb3f9440790c0792e0d398f0a520a6a4058018e546862b6fba89d7ae990efaeb97da71e1913e9ebf5a8b5621a3d55c710
@@ -4201,13 +4194,6 @@ __metadata:
   version: 3.35.1
   resolution: "core-js-pure@npm:3.35.1"
   checksum: 1e3154d47be12ba82dd927b0af87fac4c6011d36772bc03e3690b1e70d9fc16f31af058f5cff647e82f8500bf08c58e1261e63dcc797faea568ebc6fc50331a7
-  languageName: node
-  linkType: hard
-
-"core-js@npm:^3.19.2":
-  version: 3.35.1
-  resolution: "core-js@npm:3.35.1"
-  checksum: ebc8e22c36d13bcf2140cbc1d8ad65d1b08192bff4c43ade70c72eac103cb4dcfbc521f2b1ad1c74881b0a4353e64986537893ae4f07888e49228340efa13ae6
   languageName: node
   linkType: hard
 
@@ -8068,13 +8054,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"performance-now@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "performance-now@npm:2.1.0"
-  checksum: 22c54de06f269e29f640e0e075207af57de5052a3d15e360c09b9a8663f393f6f45902006c1e71aa8a5a1cdfb1a47fe268826f8496d6425c362f00f5bc3e85d9
-  languageName: node
-  linkType: hard
-
 "picocolors@npm:^1.0.0":
   version: 1.0.0
   resolution: "picocolors@npm:1.0.0"
@@ -8131,7 +8110,6 @@ __metadata:
     babel-preset-react-app: "npm:10.0.1"
     bfj: "npm:8.0.0"
     browserslist: "npm:4.22.2"
-    camelcase: "npm:6.3.0"
     case-sensitive-paths-webpack-plugin: "npm:2.4.0"
     css-loader: "npm:6.9.1"
     css-minimizer-webpack-plugin: "npm:6.0.0"
@@ -8150,7 +8128,6 @@ __metadata:
     postcss-normalize: "npm:10.0.1"
     postcss-preset-env: "npm:9.3.0"
     react: "npm:18.2.0"
-    react-app-polyfill: "npm:3.0.0"
     react-dev-utils: "npm:12.0.1"
     react-dom: "npm:18.2.0"
     react-refresh: "npm:0.14.0"
@@ -9015,15 +8992,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"promise@npm:^8.1.0":
-  version: 8.3.0
-  resolution: "promise@npm:8.3.0"
-  dependencies:
-    asap: "npm:~2.0.6"
-  checksum: 6fccae27a10bcce7442daf090279968086edd2e3f6cebe054b71816403e2526553edf510d13088a4d0f14d7dfa9b9dfb188cab72d6f942e186a4353b6a29c8bf
-  languageName: node
-  linkType: hard
-
 "prompts@npm:^2.4.2":
   version: 2.4.2
   resolution: "prompts@npm:2.4.2"
@@ -9078,15 +9046,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"raf@npm:^3.4.1":
-  version: 3.4.1
-  resolution: "raf@npm:3.4.1"
-  dependencies:
-    performance-now: "npm:^2.1.0"
-  checksum: 337f0853c9e6a77647b0f499beedafea5d6facfb9f2d488a624f88b03df2be72b8a0e7f9118a3ff811377d534912039a3311815700d2b6d2313f82f736f9eb6e
-  languageName: node
-  linkType: hard
-
 "randombytes@npm:^2.1.0":
   version: 2.1.0
   resolution: "randombytes@npm:2.1.0"
@@ -9112,20 +9071,6 @@ __metadata:
     iconv-lite: "npm:0.4.24"
     unpipe: "npm:1.0.0"
   checksum: 5dad5a3a64a023b894ad7ab4e5c7c1ce34d3497fc7138d02f8c88a3781e68d8a55aa7d4fd3a458616fa8647cc228be314a1c03fb430a07521de78b32c4dd09d2
-  languageName: node
-  linkType: hard
-
-"react-app-polyfill@npm:3.0.0":
-  version: 3.0.0
-  resolution: "react-app-polyfill@npm:3.0.0"
-  dependencies:
-    core-js: "npm:^3.19.2"
-    object-assign: "npm:^4.1.1"
-    promise: "npm:^8.1.0"
-    raf: "npm:^3.4.1"
-    regenerator-runtime: "npm:^0.13.9"
-    whatwg-fetch: "npm:^3.6.2"
-  checksum: 7079c81717f4707d078943ab507771c3e80333e6c2c80c8d9a02e4a5661974e9bb196aea9f56336f559214a23f495c5f3907937d13a070e701019ae7a9d53c26
   languageName: node
   linkType: hard
 
@@ -9274,13 +9219,6 @@ __metadata:
   version: 1.4.2
   resolution: "regenerate@npm:1.4.2"
   checksum: f73c9eba5d398c818edc71d1c6979eaa05af7a808682749dd079f8df2a6d91a9b913db216c2c9b03e0a8ba2bba8701244a93f45211afbff691c32c7b275db1b8
-  languageName: node
-  linkType: hard
-
-"regenerator-runtime@npm:^0.13.9":
-  version: 0.13.11
-  resolution: "regenerator-runtime@npm:0.13.11"
-  checksum: 12b069dc774001fbb0014f6a28f11c09ebfe3c0d984d88c9bced77fdb6fedbacbca434d24da9ae9371bfbf23f754869307fb51a4c98a8b8b18e5ef748677ca24
   languageName: node
   linkType: hard
 
@@ -10883,13 +10821,6 @@ __metadata:
   version: 0.1.4
   resolution: "websocket-extensions@npm:0.1.4"
   checksum: bbc8c233388a0eb8a40786ee2e30d35935cacbfe26ab188b3e020987e85d519c2009fe07cfc37b7f718b85afdba7e54654c9153e6697301f72561bfe429177e0
-  languageName: node
-  linkType: hard
-
-"whatwg-fetch@npm:^3.6.2":
-  version: 3.6.20
-  resolution: "whatwg-fetch@npm:3.6.20"
-  checksum: fa972dd14091321d38f36a4d062298df58c2248393ef9e8b154493c347c62e2756e25be29c16277396046d6eaa4b11bd174f34e6403fff6aaca9fb30fa1ff46d
   languageName: node
   linkType: hard
 
