@@ -1,10 +1,14 @@
 import { type FC, useState } from 'react';
+import cx from 'classnames';
 
+import { Nav } from '../nav';
 import { type TodoFilterType, type TodoModel } from './todo.models';
 import { TodoFilter } from './todo.filter';
 import { TodoInput } from './todo.input';
 import { TodoList } from './todo.list';
 
+import appStyles from '../app.module.scss'
+import styles from './todo.module.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export const Todo: FC = () => {
@@ -46,14 +50,20 @@ export const Todo: FC = () => {
     };
 
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="card card-white">
-                        <div className="card-body">
-                            <TodoInput onAddTodo={handleNewTodo} />
-                            <TodoFilter currentFilter={todoFilter} onChange={handleFilterChange} />
-                            <TodoList todos={todos} filter={todoFilter} onMarkAs={handleMarkAs} onDelete={handleDelete} />
+        <div>
+            <Nav />
+            <div className={appStyles.appHeader}>
+                <div className={cx('container', styles.todoContainer)}>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <h1>Todo List</h1>
+                            <div className="card card-white">
+                                <div className="card-body">
+                                    <TodoInput onAddTodo={handleNewTodo} />
+                                    <TodoFilter currentFilter={todoFilter} onChange={handleFilterChange} />
+                                    <TodoList todos={todos} filter={todoFilter} onMarkAs={handleMarkAs} onDelete={handleDelete} />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

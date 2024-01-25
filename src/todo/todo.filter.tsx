@@ -11,15 +11,9 @@ interface TodoFilterProps {
 }
 
 export const TodoFilter: FC<TodoFilterProps> = ({ currentFilter, onChange }) => (
-    <ul className="nav nav-pills todo-nav">
-        <li role="presentation" className={cx('nav-item', 'all-task', { active: currentFilter === 'all' } )}>
-            <button className="btn btn-link nav-link" onClick={() => onChange('all')}>All</button>
-        </li>
-        <li role="presentation" className={cx('nav-item', 'active-task', { active: currentFilter === 'incomplete' } )}>
-            <button className="btn btn-link nav-link" onClick={() => onChange('incomplete')}>Active</button>
-        </li>
-        <li role="presentation" className={cx('nav-item', 'completed-task', { active: currentFilter === 'completed' } )}>
-            <button className="btn btn-link nav-link" onClick={() => onChange('completed')}>Completed</button>
-        </li>
-    </ul>
+    <div className={cx('btn-group', styles.todoFilter)}>
+        <button className={cx('btn', 'btn-primary', { active: currentFilter === 'all' } )} onClick={() => onChange('all')}>All</button>
+        <button className={cx('btn', 'btn-primary', { active: currentFilter === 'incomplete' } )} onClick={() => onChange('incomplete')}>Active</button>
+        <button className={cx('btn', 'btn-primary', { active: currentFilter === 'completed' } )} onClick={() => onChange('completed')}>Completed</button>
+    </div>
 );
