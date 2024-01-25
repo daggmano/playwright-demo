@@ -7,7 +7,6 @@ import { TodoFilter } from './todo.filter';
 import { TodoInput } from './todo.input';
 import { TodoList } from './todo.list';
 
-import appStyles from '../app.module.scss'
 import styles from './todo.module.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -52,7 +51,7 @@ export const Todo: FC = () => {
     return (
         <div>
             <Nav />
-            <div className={appStyles.appHeader}>
+            <div className={styles.todoWrapper}>
                 <div className={cx('container', styles.todoContainer)}>
                     <div className="row">
                         <div className="col-md-12">

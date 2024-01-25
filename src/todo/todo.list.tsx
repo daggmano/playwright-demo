@@ -11,9 +11,9 @@ interface TodoListProps {
 }
 
 export const TodoList: FC<TodoListProps> = ({ todos, filter, onMarkAs, onDelete }) => (
-    <div className="todo-list">
+    <ul className="list-group">
         {todos.filter((i) => filter === 'all' || (filter === 'completed' && i.completed) || (filter === 'incomplete' && !i.completed)).map((item) => (
             <TodoItem key={item.id} todo={item} onMarkAs={(complete) => onMarkAs(item.id, complete)} onDelete={() => onDelete(item.id)} />
         ))}
-    </div>
+    </ul>
 );
