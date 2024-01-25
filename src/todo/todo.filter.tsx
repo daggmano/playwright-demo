@@ -3,6 +3,8 @@ import cx from 'classnames';
 
 import { TodoFilterType } from './todo.models';
 
+import styles from './todo.module.scss';
+
 interface TodoFilterProps {
     currentFilter: TodoFilterType;
     onChange: (val: TodoFilterType) => void;

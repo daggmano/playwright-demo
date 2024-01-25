@@ -6,7 +6,6 @@ import { TodoInput } from './todo.input';
 import { TodoList } from './todo.list';
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './todo.scss';
 
 export const Todo: FC = () => {
     const [todos, setTodos] = useState<TodoModel[]>([
