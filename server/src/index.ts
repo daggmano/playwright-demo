@@ -1,5 +1,6 @@
 import bodyParser from 'body-parser';
 import express from 'express';
+import cors, { CorsOptions } from 'cors';
 import { addRxPlugin, type RxDatabase, createRxDatabase } from 'rxdb';
 import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
 import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
@@ -9,6 +10,16 @@ import { todoSchema } from './schemas/todo.schema';
 
 const app = express();
 app.use(bodyParser.json());
+
+// Allow any client.
+const corsOptions: CorsOptions = {
+    origin: (origin, callback) => {
+        callback(null, true);
+    },
+    credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 let rxDatabase: RxDatabase;
 

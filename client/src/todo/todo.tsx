@@ -1,51 +1,89 @@
-import { type FC, useState } from 'react';
+import { type FC, useState, useEffect } from 'react';
 import cx from 'classnames';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { Nav } from '../nav';
 import { type TodoFilterType, type TodoModel } from './todo.models';
 import { TodoFilter } from './todo.filter';
 import { TodoInput } from './todo.input';
 import { TodoList } from './todo.list';
+import TodoService from './todo.service';
 
 import styles from './todo.module.scss';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export const Todo: FC = () => {
-    const [todos, setTodos] = useState<TodoModel[]>([
-        { id: 1, text: 'Create theme', completed: false },
-        { id: 2, text: 'Work on wordpress', completed: false },
-        { id: 3, text: 'Organise office main department', completed: false },
-        { id: 4, text: 'Error solve in HTML template', completed: false },
-    ]);
-    
+    const queryClient = useQueryClient();
+
+    const todoQuery = useQuery({
+        queryKey: ['todos'],
+        queryFn: async () => {
+            const todoService = new TodoService();
+            return todoService.getTodos();
+        },
+    });
+
     const [todoFilter, setTodoFilter] = useState<TodoFilterType>('all');
+
+    useEffect(() => {
+        const service = new TodoService();
+        service.getTodos().then(console.log);
+    });
+
+    const addTodoAsync = async (text: string): Promise<void> => {
+        const todoService = new TodoService();
+        await todoService.addTodo(text);
+    };
+
+    const addMutation = useMutation({
+        mutationFn: addTodoAsync,
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ['todos'] });
+        }
+    });
 
     const handleNewTodo = (text: string) => {
         if (text.length === 0) {
             return;
         }
 
-        const maxId = todos.reduce((p, v) => Math.max(p, v.id), 0);
-        setTodos([...todos, { id: maxId + 1, text, completed: false } ]);
+        addMutation.mutate(text);
     };
 
     const handleFilterChange = (val: TodoFilterType) => {
         setTodoFilter(val);
     };
 
-    const handleMarkAs = (id: number, complete: boolean) => {
-        const newList = [...todos];
-        const item = newList.find((i) => i.id === id);
-        if (item) {
-            item.completed = complete;
-        }
-
-        setTodos(newList);
+    const markAsAsync = async (data: { id: number, completed: boolean }): Promise<void> => {
+        const todoService = new TodoService();
+        await todoService.setMarkedAs(data.id, data.completed);
     };
 
+    const markAsMutation = useMutation({
+        mutationFn: markAsAsync,
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ['todos'] });
+        },
+    });
+
+    const handleMarkAs = (id: number, completed: boolean) => {
+        markAsMutation.mutate({ id, completed });
+    };
+
+    const deleteAsync = async (id: number) => {
+        const todoService = new TodoService();
+        await todoService.deleteTodo(id);
+    };
+
+    const deleteMutation = useMutation({
+        mutationFn: deleteAsync,
+        onSuccess: async () => {
+            await queryClient.invalidateQueries({ queryKey: ['todos'] });
+        },
+    });
+
     const handleDelete = (id: number) => {
-        const newList = [...todos].filter((i) => i.id !== id);
-        setTodos(newList);
+        deleteMutation.mutate(id);
     };
 
     return (
@@ -60,7 +98,9 @@ export const Todo: FC = () => {
                                 <div className="card-body">
                                     <TodoInput onAddTodo={handleNewTodo} />
                                     <TodoFilter currentFilter={todoFilter} onChange={handleFilterChange} />
-                                    <TodoList todos={todos} filter={todoFilter} onMarkAs={handleMarkAs} onDelete={handleDelete} />
+                                    {!todoQuery.isLoading && !todoQuery.isError && todoQuery.data && (
+                                        <TodoList todos={todoQuery.data} filter={todoFilter} onMarkAs={handleMarkAs} onDelete={handleDelete} />
+                                    )}
                                 </div>
                             </div>
                         </div>

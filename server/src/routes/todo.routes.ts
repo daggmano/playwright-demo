@@ -41,7 +41,7 @@ todoRoutes.put('/api/todos/:id', async (req, res) => {
         return;
     }
 
-    const dbModel = await rxDatabase.todos.findOne({ selector: { id: model.id.toString() } }).exec();
+    const dbModel = await rxDatabase.todos.findOne(model.id.toString()).exec();
 
     if (dbModel == null) {
         res.status(404).send('Not found');
@@ -65,7 +65,7 @@ todoRoutes.delete('/api/todos/:id', async (req, res) => {
         return;
     }
 
-    const dbModel = await rxDatabase.todos.findOne({ selector: { id: id.toString() } }).exec();
+    const dbModel = await rxDatabase.todos.findOne(id.toString()).exec();
 
     if (dbModel == null) {
         res.status(404).send('Not found');
@@ -74,5 +74,5 @@ todoRoutes.delete('/api/todos/:id', async (req, res) => {
 
     await dbModel.remove();
 
-    res.status(410).send('OK');
+    res.send('OK');
 });

@@ -10,10 +10,11 @@ function App() {
             <div className={styles.app}>
                 <header className={styles.appHeader}>
                     <img src={logo} className={styles.appLogo} alt="logo" />
-                    <p>
+                    <p data-test-id="display-text">
                         Edit <code>src/App.tsx</code> and save to reload.
                     </p>
                     <a
+                        data-test-id="learn-react-link"
                         className={styles.appLink}
                         href="https://reactjs.org"
                         target="_blank"
