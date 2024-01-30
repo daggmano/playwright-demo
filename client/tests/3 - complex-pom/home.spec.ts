@@ -14,12 +14,15 @@ const test = base.extend<{ homePage: HomePom, nav: NavPom }>({
     },
 });
 
-test('should have text and link', async ({ homePage, nav }) => {
-    await expect(nav.homeLink).toBeVisible();
-    await expect(nav.homeLink).toHaveAttribute('href', '/');
+test('should have text and link', async ({ homePage, nav, isMobile }) => {
+    // Navigation will not be visible on mobile
+    if (!isMobile) {
+        await expect(nav.homeLink).toBeVisible();
+        await expect(nav.homeLink).toHaveAttribute('href', '/');
 
-    await expect(nav.todoLink).toBeVisible();
-    await expect(nav.todoLink).toHaveAttribute('href', '/todo');
+        await expect(nav.todoLink).toBeVisible();
+        await expect(nav.todoLink).toHaveAttribute('href', '/todo');
+    }
 
     await expect(homePage.text).toBeVisible();
     await expect(homePage.text).toHaveText('Edit src/App.tsx and save to reload.');

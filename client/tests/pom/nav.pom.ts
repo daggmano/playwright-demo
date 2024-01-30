@@ -5,9 +5,7 @@ export class NavPom {
     readonly todoLink: Locator;
 
     constructor(public readonly page: Page) {
-        const navList = page.locator('nav.navbar ul');
-
-        this.homeLink = navList.locator('a', { hasText: 'Home' });
-        this.todoLink = navList.locator('a', { hasText: 'Todo' });
+        this.homeLink = page.getByRole('link', { name: 'Home' });
+        this.todoLink = page.getByRole('link', { name: 'Todo' });
     }
 }
